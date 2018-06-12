@@ -1,6 +1,8 @@
 package com.mindex.challenge.service.impl;
 
+import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.dao.ReportingStructureRepository;
+import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.ReportingStructureService;
 import org.slf4j.Logger;
@@ -14,6 +16,9 @@ import java.util.UUID;
 public class ReportingStructureServiceImpl implements ReportingStructureService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ReportingStructureServiceImpl.class);
+    
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Autowired
     private ReportingStructureRepository reportingStructureRepository;
@@ -22,7 +27,6 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     public ReportingStructure create(ReportingStructure reportingStructure) {
         LOG.debug("Creating reporting structure [{}]", reportingStructure);
 
-        Employee employee employee.setEmployeeId(UUID.randomUUID().toString());
         reportingStructureRepository.insert(reportingStructure);
 
         return reportingStructure;
