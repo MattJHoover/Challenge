@@ -27,4 +27,12 @@ public class ReportingStructureController {
 
         return reportingStructureService.read(id);
     }
+    
+    @PutMapping("/reportingStructure/{id}")
+    public ReportingStructure update(@PathVariable String id, @RequestBody ReportingStructure reportingStructure) {
+        LOG.debug("Received reporting structure create request for id [{}] and reporting structure [{}]", id, reportingStructure);
+
+        employee.setEmployeeId(id);
+        return reportingStructureService.update(reportingStructure);
+    }
 }
