@@ -23,14 +23,14 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     @Autowired
     private ReportingStructureRepository reportingStructureRepository;
 
-    @Override
-    public ReportingStructure create(ReportingStructure reportingStructure) {
-        LOG.debug("Creating reporting structure [{}]", reportingStructure);
+    //@Override
+    //public ReportingStructure create(ReportingStructure reportingStructure) {
+        //LOG.debug("Creating reporting structure [{}]", reportingStructure);
 
-        reportingStructureRepository.insert(reportingStructure);
+        //reportingStructureRepository.insert(reportingStructure);
 
-        return reportingStructure;
-    }
+        //return reportingStructure;
+    //}
 
     @Override
     public ReportingStructure read(String id) {
@@ -46,10 +46,10 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         return reportingStructure;
     }
 
-    @Override
-    public ReportingStructure update(ReportingStructure reportingStructure) {
-        LOG.debug("Updating reporting structure [{}]", reportingStructure);
+    //@Override
+    //public ReportingStructure update(ReportingStructure reportingStructure) {
+        //LOG.debug("Updating reporting structure [{}]", reportingStructure);
 
-        return reportingStructureRepository.save(reportingStructure);
-    }
+        //return reportingStructureRepository.save(reportingStructure);
+    //}
 }
