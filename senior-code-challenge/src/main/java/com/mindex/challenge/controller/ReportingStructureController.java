@@ -13,6 +13,13 @@ public class ReportingStructureController {
 
     @Autowired
     private ReportingStructureService reportingStructureService;
+    
+    @PostMapping("/reportingStructure")
+    public ReportingStructure create(@RequestBody ReportingStructure reportingStructure) {
+        LOG.debug("Received reporting structure create request for [{}]", reportingStructure);
+
+        return reportingStructureService.create(reportingStructure);
+    }
 
     @GetMapping("/reportingStructure/{id}")
     public ReportingStructure read(@PathVariable String id) {
