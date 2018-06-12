@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class ReportingStructureServiceImpl implements ReportingStructureService {
 
@@ -37,7 +35,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         LOG.debug("Creating reporting structure with employeeId [{}]", id);
 
         Employee employee = employeeRepository.findByEmployeeId(id);
-        ReportingStructure reportingStructure = reportingStructureRepository.findByEmployee(employee)
+        ReportingStructure reportingStructure = reportingStructureRepository.findByEmployee(employee);
 
         if (reportingStructure == null) {
             throw new RuntimeException("Invalid employee: " + id);
