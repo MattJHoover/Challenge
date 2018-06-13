@@ -3,6 +3,7 @@ package com.mindex.challenge.data;
 public class Compensation {
 	private Employee employee;
 	private Double salary;
+	private String effectiveDate;
 	
 	public Compensation() {
 	}
@@ -21,5 +22,13 @@ public class Compensation {
 	
 	public void setSalary(Double salary) {
 		this.salary = salary;
+	}
+	
+	public String getEffectiveDate() {
+		return effectiveDate;
+	}
+	
+	public void setEffectiveDate(String effectiveDate) {
+		this.effectiveDate = effectiveDate;
 	}
 }

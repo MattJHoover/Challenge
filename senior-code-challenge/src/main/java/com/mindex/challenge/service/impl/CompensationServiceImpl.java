@@ -24,12 +24,11 @@ public class CompensationServiceImpl implements CompensationService {
 
 	@Override
 	public Compensation create(Compensation compensation) {
-		 LOG.debug("Creating compensation [{}]", compensation);
+		LOG.debug("Creating compensation [{}]", compensation);
+		
+		compensationRepository.insert(compensation);
 
-	     //employee.setEmployeeId(UUID.randomUUID().toString());
-	     compensationRepository.insert(compensation);
-
-	     return compensation;
+	    return compensation;
 	}
 
 	@Override
@@ -45,5 +44,4 @@ public class CompensationServiceImpl implements CompensationService {
         
         return compensation;
 	}
-
 }

@@ -34,12 +34,16 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         ReportingStructure reportingStructure = new ReportingStructure();
         reportingStructure.setEmployee(employee);
         List<Employee> directReports = employee.getDirectReports();
-        numberOfDirectReports = directReports.size();
-        for(Employee directReport : directReports) {
-        	numberOfDirectReports += countDirectReports(directReport);
+        if(directReports != null) {
+        	numberOfDirectReports = directReports.size();
+        	for(Employee directReport : directReports) {
+        		numberOfDirectReports += countDirectReports(directReport);
+        	}
         }
         reportingStructure.setNumberOfReports(numberOfDirectReports);
-        numberOfDirectReports = 0;
+        if(numberOfDirectReports > 0) {
+        	numberOfDirectReports = 0;
+        }
         reportingStructureRepository.insert(reportingStructure);
         ReportingStructure reporting = reportingStructureRepository.findByEmployee(employee);
 
