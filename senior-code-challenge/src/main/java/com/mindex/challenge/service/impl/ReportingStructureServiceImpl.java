@@ -23,6 +23,8 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
 
     @Autowired
     private ReportingStructureRepository reportingStructureRepository;
+    
+    private int numberOfDirectReports = 0;
 
     @Override
     public ReportingStructure read(String id) {
@@ -32,8 +34,12 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         ReportingStructure reportingStructure = new ReportingStructure();
         reportingStructure.setEmployee(employee);
         List<Employee> directReports = employee.getDirectReports();
-        int numberOfDirectReports = directReports.size();
+        numberOfDirectReports = directReports.size();
+        for(Employee directReport : directReports) {
+        	numberOfDirectReports += countDirectReports(directReport);
+        }
         reportingStructure.setNumberOfReports(numberOfDirectReports);
+        numberOfDirectReports = 0;
         reportingStructureRepository.insert(reportingStructure);
         ReportingStructure reporting = reportingStructureRepository.findByEmployee(employee);
 
@@ -42,5 +48,20 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         }
 
         return reporting;
+    }
+    
+    public int countDirectReports(Employee employee) {
+    	int numberOfReports = 0;
+    	String empId = employee.getEmployeeId();
+    	Employee emp = employeeRepository.findByEmployeeId(empId);
+    	List<Employee> directReports = emp.getDirectReports();
+    	if(directReports == null) {
+    		return 0;
+    	}
+    	numberOfReports += directReports.size();
+    	for(Employee directReport : directReports) {
+    		numberOfReports += countDirectReports(directReport);
+    	}
+		return numberOfReports;
     }
 }

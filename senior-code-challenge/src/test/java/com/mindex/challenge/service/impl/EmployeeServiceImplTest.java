@@ -1,7 +1,6 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.service.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -22,9 +20,6 @@ public class EmployeeServiceImplTest {
 
     private String employeeUrl;
     private String employeeIdUrl;
-
-    @Autowired
-    private EmployeeService employeeService;
 
     @LocalServerPort
     private int port;
